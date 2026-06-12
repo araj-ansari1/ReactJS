@@ -1,0 +1,477 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb;
+    color: #111827;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f3f4f6;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  input[type='range'] {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    appearance: none;
+    cursor: pointer;
+    background: #e5e7eb;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2563eb;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@layer components {
+
+  /* ---- Sidebar Link ---- */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium cursor-pointer select-none transition-all duration-200;
+    color: #4b5563;
+  }
+
+  .sidebar-link:hover {
+    background-color: #f3f4f6;
+    color: #2563eb;
+  }
+
+  .sidebar-link.active {
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-weight: 600;
+  }
+
+  /* ---- Stat Card ---- */
+  .stat-card {
+    @apply rounded-xl border p-6 shadow-sm transition-all duration-200;
+    background-color: #ffffff;
+    border-color: #e5e7eb;
+  }
+
+  .stat-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* ---- Input Field ---- */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border text-sm transition-all duration-200;
+    background-color: #ffffff;
+    border-color: #d1d5db;
+    color: #111827;
+    outline: none;
+  }
+
+  .input-field::placeholder {
+    color: #9ca3af;
+  }
+
+  .input-field:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+
+  .input-field:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #f3f4f6;
+  }
+
+  /* ---- Buttons ---- */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 select-none;
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background-color: #1d4ed8;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.95);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border transition-all duration-200 select-none;
+    border-color: #d1d5db;
+    color: #374151;
+    background-color: transparent;
+  }
+
+  .btn-secondary:hover {
+    background-color: #f9fafb;
+  }
+
+  .btn-secondary:active {
+    transform: scale(0.95);
+  }
+
+  /* ---- Section Card ---- */
+  .section-card {
+    @apply rounded-xl border p-6 shadow-sm;
+    background-color: #ffffff;
+    border-color: #e5e7eb;
+  }
+
+  /* ---- Form Label ---- */
+  .form-label {
+    @apply block text-sm font-medium mb-1.5;
+    color: #374151;
+  }
+
+  /* ---- Form Error ---- */
+  .form-error {
+    @apply text-xs mt-1;
+    color: #ef4444;
+  }
+
+  /* ---- Info Row ---- */
+  .info-row {
+    @apply flex justify-between items-center py-2.5 border-b last:border-0;
+    border-color: #f3f4f6;
+  }
+
+  .info-label {
+    @apply text-sm;
+    color: #9ca3af;
+  }
+
+  .info-value {
+    @apply text-sm font-semibold;
+    color: #111827;
+  }
+
+  /* ---- Skeleton ---- */
+  .skeleton {
+    @apply rounded animate-pulse;
+    background-color: #e5e7eb;
+  }
+
+  /* ---- Divider ---- */
+  .divider {
+    @apply h-px w-full my-4;
+    background-color: #e5e7eb;
+  }
+
+  /* ---- Avatar ---- */
+  .avatar {
+    @apply rounded-full flex items-center justify-center font-semibold text-white flex-shrink-0 select-none;
+    background-color: #2563eb;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-select {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* =====================================================
+   DARK MODE — CSS variables approach
+===================================================== */
+.dark body {
+  background-color: #020617;
+  color: #f1f5f9;
+}
+
+.dark .sidebar-link {
+  color: #94a3b8;
+}
+
+.dark .sidebar-link:hover {
+  background-color: #1e293b;
+  color: #60a5fa;
+}
+
+.dark .sidebar-link.active {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: #60a5fa;
+}
+
+.dark .stat-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .input-field {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark .input-field::placeholder {
+  color: #64748b;
+}
+
+.dark .input-field:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.dark .btn-secondary {
+  border-color: #334155;
+  color: #d1d5db;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #1e293b;
+}
+
+.dark .section-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .form-label {
+  color: #d1d5db;
+}
+
+.dark .info-row {
+  border-color: #334155;
+}
+
+.dark .info-label {
+  color: #64748b;
+}
+
+.dark .info-value {
+  color: #f1f5f9;
+}
+
+.dark .skeleton {
+  background-color: #334155;
+}
+
+.dark .divider {
+  background-color: #334155;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.4s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.4s ease-out forwards;
+}
+
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+/* =====================================================
+   RECHARTS
+===================================================== */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #e5e7eb;
+}
+
+.dark .recharts-cartesian-grid-horizontal line,
+.dark .recharts-cartesian-grid-vertical line {
+  stroke: #334155;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+.recharts-legend-item-text {
+  color: #6b7280 !important;
+  font-size: 12px !important;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 640px) {
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .section-card {
+    padding: 1rem;
+  }
+}
+
+/* =====================================================
+   PRINT
+===================================================== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .stat-card,
+  .section-card {
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+  }
+}
